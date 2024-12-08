@@ -1,5 +1,7 @@
+#include "types.h"
+
 void printf(char* str) {
-  unsigned short* VideoMemory = (unsigned short*) 0xb8000;
+  static uint16_t* VideoMemory = (uint16_t*) 0xb8000;
 
   for(int i = 0; str[i] != '\0'; ++i) {
     VideoMemory[i] = (VideoMemory[i] & 0xFF00) | str[i];
@@ -15,8 +17,8 @@ extern "C" void callConstructors() {
   }
 }
 
-extern "C" void kernelMain(void* multiboot_structure, unsigned int magicnumber) {
-  printf("CS307 Operating Systems Project: Minimal Operating System in C++\n");
+extern "C" void kernelMain(void* multiboot_structure, uint32_t /* multiboot_magic */) {
+  printf("CS307 Operating Systems Project: Minimal Operating System in C++");
 
   while(1);
 }
