@@ -4,11 +4,11 @@ linux mint 17
 
 sudo apt-get install g++ binutils libc6-dev-i386
 
+make clean
+
 make loader.o
 make kernel.o
 make mykernel.bin
-
-make clean
 
 make install
 sudo vim /boot/grub/grub.cfg
