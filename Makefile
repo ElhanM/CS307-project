@@ -4,6 +4,9 @@ LDPPARAMS = -melf_i386
 
 objects = loader.o gdt.o kernel.o
 
+clean:
+	git clean -fdx
+
 %.o: %.cpp
 	g++ $(GPPPARAMS) -o $@ -c $<
 
@@ -15,9 +18,6 @@ mykernel.bin: linker.ld $(objects)
 
 install: mykernel.bin
 	sudo cp $< /boot/mykernel.bin
-
-clean:
-	rm -f kernel.o loader.o mykernel.bin mykernel.iso
 
 mykernel.iso: mykernel.bin
 	mkdir iso
