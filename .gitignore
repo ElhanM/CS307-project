@@ -1,4 +1,6 @@
+loader.o 
+gdt.o 
+port.o 
 kernel.o
-loader.o
 mykernel.bin
 mykernel.iso
